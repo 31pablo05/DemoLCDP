@@ -9,7 +9,7 @@ const Hero = () => {
     {
       id: 1,
       tipo: 'imagen',
-      src: '/imagenes/hero-pollo-1.jpg',
+      src: '/imagenes/localyrigoyen.jpg',
       alt: 'Productos frescos de pollo',
       titulo: 'Productos 100% Frescos',
       subtitulo: 'De la mejor calidad para tu mesa'
@@ -17,7 +17,7 @@ const Hero = () => {
     {
       id: 2,
       tipo: 'imagen', 
-      src: '/imagenes/hero-promociones.jpg',
+      src: '/imagenes/localyrigoyen2.jpg',
       alt: 'Promociones especiales',
       titulo: 'Promociones Especiales',
       subtitulo: 'Los mejores precios de Trelew'
@@ -25,7 +25,7 @@ const Hero = () => {
     {
       id: 3,
       tipo: 'imagen',
-      src: '/imagenes/hero-local.jpg',
+      src: '/imagenes/heladera1.jpg',
       alt: 'Nuestro local',
       titulo: 'Te Esperamos en Casa',
       subtitulo: 'Atención personalizada y familiar'
