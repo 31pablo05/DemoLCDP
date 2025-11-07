@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useEffect } from 'react';
+import { createContext, useContext, useReducer, useEffect, useMemo, useCallback } from 'react';
 
 // Crear el contexto
 const CarritoContext = createContext();
@@ -142,28 +142,28 @@ export function CarritoProvider({ children }) {
     localStorage.setItem('carritoLaCasaDelPollo', JSON.stringify(carrito));
   }, [carrito]);
 
-  // Funciones para interactuar con el carrito
-  const agregarProducto = (producto) => {
+  // Funciones para interactuar con el carrito - memoizadas con useCallback
+  const agregarProducto = useCallback((producto) => {
     dispatch({ type: ACTIONS.AGREGAR_PRODUCTO, payload: producto });
-  };
+  }, []);
 
-  const eliminarProducto = (producto) => {
+  const eliminarProducto = useCallback((producto) => {
     dispatch({ type: ACTIONS.ELIMINAR_PRODUCTO, payload: producto });
-  };
+  }, []);
 
-  const actualizarCantidad = (producto, nuevaCantidad) => {
+  const actualizarCantidad = useCallback((producto, nuevaCantidad) => {
     dispatch({ 
       type: ACTIONS.ACTUALIZAR_CANTIDAD, 
       payload: { ...producto, cantidad: nuevaCantidad } 
     });
-  };
+  }, []);
 
-  const limpiarCarrito = () => {
+  const limpiarCarrito = useCallback(() => {
     dispatch({ type: ACTIONS.LIMPIAR_CARRITO });
-  };
+  }, []);
 
   // Función para generar el mensaje de WhatsApp
-  const generarMensajeWhatsApp = (datosCliente) => {
+  const generarMensajeWhatsApp = useCallback((datosCliente) => {
     const { nombre, celular, tipoEntrega, direccion, sucursal, metodoPago, comentarios } = datosCliente;
     
     let mensaje = `🐔 *NUEVO PEDIDO - LA CASA DEL POLLO*\n\n`;
@@ -207,9 +207,9 @@ export function CarritoProvider({ children }) {
     mensaje += `_Pedido realizado desde lacasadelpollo.com.ar_`;
 
     return mensaje;
-  };
+  }, [carrito]);
 
-  const enviarPedidoWhatsApp = (datosCliente, numeroWhatsApp = "5492804123456") => {
+  const enviarPedidoWhatsApp = useCallback((datosCliente, numeroWhatsApp = "5492804123456") => {
     const mensaje = generarMensajeWhatsApp(datosCliente);
     const mensajeCodificado = encodeURIComponent(mensaje);
     const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`;
@@ -218,9 +218,10 @@ export function CarritoProvider({ children }) {
     window.open(urlWhatsApp, '_blank');
     
     return { exito: true, mensaje: "Tu pedido está listo para enviarse por WhatsApp" };
-  };
+  }, [generarMensajeWhatsApp]);
 
-  const valor = {
+  // Memoizar el valor del contexto para evitar re-renders innecesarios
+  const valor = useMemo(() => ({
     carrito,
     agregarProducto,
     eliminarProducto,
@@ -228,7 +229,7 @@ export function CarritoProvider({ children }) {
     limpiarCarrito,
     generarMensajeWhatsApp,
     enviarPedidoWhatsApp,
-  };
+  }), [carrito, agregarProducto, eliminarProducto, actualizarCantidad, limpiarCarrito, generarMensajeWhatsApp, enviarPedidoWhatsApp]);
 
   return (
     <CarritoContext.Provider value={valor}>
