@@ -1,44 +1,44 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Clock, MapPin, Phone } from 'lucide-react';
 
+// Datos del carrusel - movido fuera del componente para evitar recreación
+const slides = [
+  {
+    id: 1,
+    tipo: 'imagen',
+    src: '/imagenes/localyrigoyen.jpg',
+    alt: 'Productos frescos de pollo',
+    titulo: 'Productos 100% Frescos',
+    subtitulo: 'De la mejor calidad para tu mesa'
+  },
+  {
+    id: 2,
+    tipo: 'imagen', 
+    src: '/imagenes/localyrigoyen2.jpg',
+    alt: 'Promociones especiales',
+    titulo: 'Promociones Especiales',
+    subtitulo: 'Los mejores precios de Trelew'
+  },
+  {
+    id: 3,
+    tipo: 'imagen',
+    src: '/imagenes/heladera1.jpg',
+    alt: 'Nuestro local',
+    titulo: 'Te Esperamos en Casa',
+    subtitulo: 'Atención personalizada y familiar'
+  },
+  {
+    id: 4,
+    tipo: 'video',
+    src: '/videos/videolocal1.mp4',
+    alt: 'Video del local',
+    titulo: 'Conocé Nuestro Local',
+    subtitulo: 'Calidad y frescura garantizada'
+  }
+];
+
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-
-  // Datos del carrusel - aquí puedes reemplazar con imágenes reales
-  const slides = [
-    {
-      id: 1,
-      tipo: 'imagen',
-      src: '/imagenes/localyrigoyen.jpg',
-      alt: 'Productos frescos de pollo',
-      titulo: 'Productos 100% Frescos',
-      subtitulo: 'De la mejor calidad para tu mesa'
-    },
-    {
-      id: 2,
-      tipo: 'imagen', 
-      src: '/imagenes/localyrigoyen2.jpg',
-      alt: 'Promociones especiales',
-      titulo: 'Promociones Especiales',
-      subtitulo: 'Los mejores precios de Trelew'
-    },
-    {
-      id: 3,
-      tipo: 'imagen',
-      src: '/imagenes/heladera1.jpg',
-      alt: 'Nuestro local',
-      titulo: 'Te Esperamos en Casa',
-      subtitulo: 'Atención personalizada y familiar'
-    },
-    {
-      id: 4,
-      tipo: 'video',
-      src: '/videos/presentacion-local.mp4',
-      alt: 'Video del local',
-      titulo: 'Conocé Nuestro Local',
-      subtitulo: 'Calidad y frescura garantizada'
-    }
-  ];
 
   // Auto-play del carrusel
   useEffect(() => {
@@ -47,7 +47,7 @@ const Hero = () => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [slides.length]);
+  }, []); // Removida la dependencia slides.length
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);

@@ -1,60 +1,60 @@
 import { Star, ShoppingCart, Clock } from 'lucide-react';
 import { useCarrito } from '../context/CarritoContext';
 
+// Datos de ejemplo de promociones - movido fuera del componente para evitar recreación
+const promociones = [
+  {
+    id: 'promo-1',
+    nombre: 'Combo Familiar Completo',
+    descripcion: 'Pollo parrillero + 2kg pata muslo + 1kg milanesas',
+    precio: 15990,
+    precioOriginal: 18500,
+    imagen: '/imagenes/combo-familiar.jpg',
+    etiqueta: 'MÁS VENDIDO',
+    descuento: '15%',
+    unidad: 'combo',
+    categoria: 'combos'
+  },
+  {
+    id: 'promo-2',
+    nombre: 'Pack Milanesas Premium',
+    descripcion: '3kg milanesas rebozadas con avena y semillas',
+    precio: 12800,
+    precioOriginal: 15000,
+    imagen: '/imagenes/milanesas-premium.jpg',
+    etiqueta: 'PROMOCIÓN',
+    descuento: '15%',
+    unidad: 'pack',
+    categoria: 'milanesas'
+  },
+  {
+    id: 'promo-3',
+    nombre: 'Arrollados Mix',
+    descripcion: '4 arrollados: 2 jamón y queso + 2 ciruela',
+    precio: 8990,
+    precioOriginal: 10500,
+    imagen: '/imagenes/arrollados-mix.jpg',
+    etiqueta: 'OFERTA',
+    descuento: '15%',
+    unidad: 'pack',
+    categoria: 'arrollados'
+  },
+  {
+    id: 'promo-4',
+    nombre: 'Super Pack Nuggets',
+    descripcion: '2kg nuggets caseros premium para toda la familia',
+    precio: 7200,
+    precioOriginal: 8500,
+    imagen: '/imagenes/nuggets-pack.jpg',
+    etiqueta: 'ESPECIAL',
+    descuento: '15%',
+    unidad: 'pack',
+    categoria: 'nuggets'
+  }
+];
+
 const Promociones = () => {
   const { agregarProducto } = useCarrito();
-
-  // Datos de ejemplo de promociones
-  const promociones = [
-    {
-      id: 'promo-1',
-      nombre: 'Combo Familiar Completo',
-      descripcion: 'Pollo parrillero + 2kg pata muslo + 1kg milanesas',
-      precio: 15990,
-      precioOriginal: 18500,
-      imagen: '/imagenes/combo-familiar.jpg',
-      etiqueta: 'MÁS VENDIDO',
-      descuento: '15%',
-      unidad: 'combo',
-      categoria: 'combos'
-    },
-    {
-      id: 'promo-2',
-      nombre: 'Pack Milanesas Premium',
-      descripcion: '3kg milanesas rebozadas con avena y semillas',
-      precio: 12800,
-      precioOriginal: 15000,
-      imagen: '/imagenes/milanesas-premium.jpg',
-      etiqueta: 'PROMOCIÓN',
-      descuento: '15%',
-      unidad: 'pack',
-      categoria: 'milanesas'
-    },
-    {
-      id: 'promo-3',
-      nombre: 'Arrollados Mix',
-      descripcion: '4 arrollados: 2 jamón y queso + 2 ciruela',
-      precio: 8990,
-      precioOriginal: 10500,
-      imagen: '/imagenes/arrollados-mix.jpg',
-      etiqueta: 'OFERTA',
-      descuento: '15%',
-      unidad: 'pack',
-      categoria: 'arrollados'
-    },
-    {
-      id: 'promo-4',
-      nombre: 'Super Pack Nuggets',
-      descripcion: '2kg nuggets caseros premium para toda la familia',
-      precio: 7200,
-      precioOriginal: 8500,
-      imagen: '/imagenes/nuggets-pack.jpg',
-      etiqueta: 'ESPECIAL',
-      descuento: '15%',
-      unidad: 'pack',
-      categoria: 'nuggets'
-    }
-  ];
 
   const handleAgregarAlCarrito = (promocion) => {
     const producto = {
@@ -69,9 +69,6 @@ const Promociones = () => {
     };
 
     agregarProducto(producto);
-    
-    // Mostrar notificación (opcional)
-    // Puedes agregar una notificación toast aquí
   };
 
   return (
