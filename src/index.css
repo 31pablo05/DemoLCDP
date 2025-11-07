@@ -1,3 +1,276 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Estilos personalizados para La Casa del Pollo */
+
+/* Smooth scrolling para toda la página */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4f0e5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d84523;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff7d1d;
+}
+
+/* Animaciones personalizadas */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Utilidades adicionales */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out;
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.6s ease-out;
+}
+
+/* Truncar texto */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* Gradientes personalizados */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #d84523 0%, #ff7d1d 100%);
+}
+
+.bg-gradient-warm {
+  background: linear-gradient(135deg, #fbf7f4 0%, #f4f0e5 100%);
+}
+
+/* Efectos de hover suaves */
+.hover-lift:hover {
+  transform: translateY(-4px);
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 8px 25px rgba(216, 69, 35, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* Botones personalizados */
+.btn-primary {
+  @apply bg-primary-red hover:bg-primary-orange-red text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg;
+}
+
+.btn-secondary {
+  @apply bg-neutral-cream hover:bg-neutral-beige text-neutral-dark font-semibold py-3 px-6 rounded-xl transition-all duration-300;
+}
+
+/* Cards personalizadas */
+.card {
+  @apply bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1;
+}
+
+/* Efectos para imágenes */
+.img-hover-zoom {
+  transition: transform 0.5s ease;
+}
+
+.img-hover-zoom:hover {
+  transform: scale(1.1);
+}
+
+/* Overlays */
+.overlay-dark {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+}
+
+.overlay-light {
+  background: linear-gradient(
+    to bottom,
+    rgba(244, 240, 229, 0.8) 0%,
+    rgba(244, 240, 229, 0.6) 50%,
+    rgba(244, 240, 229, 0.4) 100%
+  );
+}
+
+/* Estilos para formularios */
+.form-input {
+  @apply w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-red focus:border-transparent transition-colors;
+}
+
+.form-input:focus {
+  @apply ring-2 ring-primary-red border-transparent;
+}
+
+.form-input.error {
+  @apply border-red-500 focus:ring-red-500;
+}
+
+/* Efectos de loading */
+.loading-spinner {
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #d84523;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Mejoras para móvil */
+@media (max-width: 768px) {
+  .text-responsive {
+    font-size: clamp(1rem, 4vw, 1.25rem);
+  }
+  
+  .h1-responsive {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+  
+  .h2-responsive {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+  }
+}
+
+/* Estilo para el carrito flotante */
+.floating-cart {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 40;
+}
+
+/* Mejoras de accesibilidad */
+.focus-visible:focus {
+  @apply ring-2 ring-primary-red ring-offset-2;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none;
+  }
+}
+
+/* Custom scrollbar for modal content */
+.modal-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.modal-scroll::-webkit-scrollbar-thumb {
+  background: #d84523;
+  border-radius: 3px;
+}
+
+/* Transiciones suaves para todos los elementos interactivos */
+button, a, input, textarea, select {
+  transition: all 0.2s ease;
+}
+
+/* Efectos especiales para promociones */
+.promo-badge {
+  position: relative;
+  overflow: hidden;
+}
+
+.promo-badge::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: rotate(45deg);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
