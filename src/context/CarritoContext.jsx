@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useEffect, useMemo, useCallback } from 'react';
+import { createContext, useContext, useReducer, useEffect, useCallback, useRef } from 'react';
 
 // Crear el contexto
 const CarritoContext = createContext();
@@ -122,7 +122,9 @@ function carritoReducer(estado, accion) {
 
 // Provider del contexto
 export function CarritoProvider({ children }) {
+
   const [carrito, dispatch] = useReducer(carritoReducer, estadoInicial);
+  const isFirstRender = useRef(true);
 
   // Cargar carrito del localStorage al inicializar
   useEffect(() => {
@@ -135,10 +137,12 @@ export function CarritoProvider({ children }) {
         console.error('Error al cargar carrito del localStorage:', error);
       }
     }
+    isFirstRender.current = false;
   }, []);
 
-  // Guardar carrito en localStorage cada vez que cambie
+  // Guardar carrito en localStorage cada vez que cambie, excepto en el primer render
   useEffect(() => {
+    if (isFirstRender.current) return;
     localStorage.setItem('carritoLaCasaDelPollo', JSON.stringify(carrito));
   }, [carrito]);
 
@@ -220,8 +224,8 @@ export function CarritoProvider({ children }) {
     return { exito: true, mensaje: "Tu pedido está listo para enviarse por WhatsApp" };
   }, [generarMensajeWhatsApp]);
 
-  // Memoizar el valor del contexto para evitar re-renders innecesarios
-  const valor = useMemo(() => ({
+  // Valor del contexto (sin memoización para evitar dependencias circulares)
+  const valor = {
     carrito,
     agregarProducto,
     eliminarProducto,
@@ -229,7 +233,7 @@ export function CarritoProvider({ children }) {
     limpiarCarrito,
     generarMensajeWhatsApp,
     enviarPedidoWhatsApp,
-  }), [carrito, agregarProducto, eliminarProducto, actualizarCantidad, limpiarCarrito, generarMensajeWhatsApp, enviarPedidoWhatsApp]);
+  };
 
   return (
     <CarritoContext.Provider value={valor}>
