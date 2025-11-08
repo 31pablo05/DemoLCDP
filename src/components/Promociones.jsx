@@ -95,26 +95,24 @@ const Promociones = () => {
               key={promo.id}
               className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group"
             >
-              {/* Imagen del producto */}
-              <div className="relative overflow-hidden">
-                <img
-                  src={promo.imagen}
-                  alt={promo.nombre}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
-                  onError={(e) => {
-                    // Fallback si la imagen no carga
-                    e.target.src = `data:image/svg+xml;base64,${btoa(`
-                      <svg width="400" height="200" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="100%" height="100%" fill="#f4f0e5"/>
-                        <text x="50%" y="50%" font-family="Arial" font-size="20" fill="#d84523" text-anchor="middle" dy=".3em">
-                          ${promo.nombre}
-                        </text>
-                      </svg>
-                    `)}`;
-                  }}
-                />
-                
-                {/* Etiqueta de promoción */}
+          {/* Imagen del producto */}
+          <div className="relative overflow-hidden h-48 bg-neutral-cream">
+            <img
+              src={promo.imagen}
+              alt={promo.nombre}
+              className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextElementSibling.style.display = 'flex';
+              }}
+            />
+            {/* Placeholder cuando falla la imagen */}
+            <div className="w-full h-48 bg-neutral-cream flex items-center justify-center text-neutral-dark hidden">
+              <div className="text-center">
+                <span className="text-4xl mb-2 block">🐔</span>
+                <p className="font-semibold text-sm">{promo.nombre}</p>
+              </div>
+            </div>                {/* Etiqueta de promoción */}
                 <div className="absolute top-3 left-3">
                   <span className="bg-primary-red text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg">
                     {promo.etiqueta}

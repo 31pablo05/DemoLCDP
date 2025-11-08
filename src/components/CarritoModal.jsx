@@ -83,21 +83,21 @@ const CarritoModal = ({ isOpen, onClose, onContinuar }) => {
                 >
                   {/* Imagen del producto */}
                   <div className="flex-shrink-0">
-                    <img
-                      src={producto.imagen}
-                      alt={producto.nombre}
-                      className="w-16 h-16 object-cover rounded-lg"
-                      onError={(e) => {
-                        e.target.src = `data:image/svg+xml;base64,${btoa(`
-                          <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="100%" height="100%" fill="#f4f0e5"/>
-                            <text x="50%" y="50%" font-family="Arial" font-size="8" fill="#d84523" text-anchor="middle" dy=".3em">
-                              ${producto.nombre.slice(0, 10)}
-                            </text>
-                          </svg>
-                        `)}`;
-                      }}
-                    />
+                    <div className="relative w-16 h-16 bg-neutral-cream rounded-lg">
+                      <img
+                        src={producto.imagen}
+                        alt={producto.nombre}
+                        className="w-16 h-16 object-cover rounded-lg"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                          e.target.nextElementSibling.style.display = 'flex';
+                        }}
+                      />
+                      {/* Placeholder cuando falla la imagen */}
+                      <div className="absolute inset-0 w-16 h-16 bg-neutral-cream rounded-lg flex items-center justify-center text-neutral-dark hidden">
+                        <span className="text-lg">🐔</span>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Información del producto */}

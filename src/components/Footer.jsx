@@ -36,8 +36,16 @@ const Footer = () => {
           {/* Logo y descripción */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-primary-red rounded-full flex items-center justify-center">
-                <span className="text-2xl">🐔</span>
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center overflow-hidden shadow-lg border-2 border-gray-100">
+                <img 
+                  src="/imagenes/logo.svg" 
+                  alt="La Casa del Pollo Logo"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.parentElement.innerHTML = '<span class="text-primary-red text-2xl">🐔</span>';
+                  }}
+                />
               </div>
               <div>
                 <h3 className="text-xl font-bold">La Casa del Pollo</h3>

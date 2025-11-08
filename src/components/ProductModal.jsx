@@ -65,16 +65,18 @@ const ProductModal = ({ producto, isOpen, onClose }) => {
               alt={producto.nombre}
               className="w-full h-48 object-cover rounded-xl"
               onError={(e) => {
-                e.target.src = `data:image/svg+xml;base64,${btoa(`
-                  <svg width="400" height="200" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="100%" height="100%" fill="#f4f0e5"/>
-                    <text x="50%" y="50%" font-family="Arial" font-size="16" fill="#d84523" text-anchor="middle" dy=".3em">
-                      ${producto.nombre}
-                    </text>
-                  </svg>
-                `)}`;
+                // Fallback simple para evitar loop infinito
+                e.target.style.display = 'none';
+                e.target.nextElementSibling.style.display = 'flex';
               }}
             />
+            {/* Placeholder cuando falla la imagen */}
+            <div className="w-full h-48 bg-neutral-cream rounded-xl flex items-center justify-center text-neutral-dark hidden">
+              <div className="text-center">
+                <span className="text-4xl mb-2 block">🐔</span>
+                <p className="font-semibold">{producto.nombre}</p>
+              </div>
+            </div>
           </div>
 
           {/* Descripción */}

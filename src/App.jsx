@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import { CarritoProvider } from './context/CarritoContext';
-
-// Componentes
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Promociones from './components/Promociones';
@@ -9,72 +7,55 @@ import Menu from './components/Menu';
 import About from './components/About';
 import Contacto from './components/Contacto';
 import Footer from './components/Footer';
-
-// Componentes del carrito
-import CarritoFlotante from './components/CarritoFlotante';
 import CarritoModal from './components/CarritoModal';
+import CarritoFlotante from './components/CarritoFlotante';
 import FormularioCliente from './components/FormularioCliente';
 
 function App() {
-  // Estados para controlar los modales
-  const [carritoModalAbierto, setCarritoModalAbierto] = useState(false);
-  const [formularioAbierto, setFormularioAbierto] = useState(false);
+  const [carritoModalOpen, setCarritoModalOpen] = useState(false);
+  const [formularioClienteOpen, setFormularioClienteOpen] = useState(false);
 
-  // Funciones para manejar la navegación entre modales
   const handleAbrirCarrito = () => {
-    setCarritoModalAbierto(true);
+    setCarritoModalOpen(true);
   };
 
   const handleCerrarCarrito = () => {
-    setCarritoModalAbierto(false);
+    setCarritoModalOpen(false);
   };
 
-  const handleContinuarPedido = () => {
-    setCarritoModalAbierto(false);
-    setFormularioAbierto(true);
-  };
-
-  const handleVolverAlCarrito = () => {
-    setFormularioAbierto(false);
-    setCarritoModalAbierto(true);
+  const handleContinuarCompra = () => {
+    setCarritoModalOpen(false);
+    setFormularioClienteOpen(true);
   };
 
   const handleCerrarFormulario = () => {
-    setFormularioAbierto(false);
+    setFormularioClienteOpen(false);
   };
 
   return (
     <CarritoProvider>
       <div className="App">
-        {/* Navegación */}
         <Navbar onCarritoClick={handleAbrirCarrito} />
-
-        {/* Contenido principal */}
-        <main>
-          <Hero />
-          <Promociones />
-          <Menu />
-          <About />
-          <Contacto />
-        </main>
-
-        {/* Footer */}
+        <Hero />
+        <Promociones />
+        <Menu />
+        <About />
+        <Contacto />
         <Footer />
-
+        
         {/* Carrito flotante */}
         <CarritoFlotante onClick={handleAbrirCarrito} />
-
+        
         {/* Modales */}
-        <CarritoModal
-          isOpen={carritoModalAbierto}
+        <CarritoModal 
+          isOpen={carritoModalOpen}
           onClose={handleCerrarCarrito}
-          onContinuar={handleContinuarPedido}
+          onContinuar={handleContinuarCompra}
         />
-
+        
         <FormularioCliente
-          isOpen={formularioAbierto}
+          isOpen={formularioClienteOpen}
           onClose={handleCerrarFormulario}
-          onVolver={handleVolverAlCarrito}
         />
       </div>
     </CarritoProvider>

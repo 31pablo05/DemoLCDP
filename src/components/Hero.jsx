@@ -81,7 +81,7 @@ const Hero = () => {
                 alt={slide.alt}
                 className="w-full h-full object-cover"
                 onError={(e) => {
-                  // Fallback a un color de fondo si la imagen no carga
+                  // Fallback simple para evitar loop infinito
                   e.target.style.display = 'none';
                   e.target.parentElement.style.background = 'linear-gradient(135deg, #d84523 0%, #ff7d1d 100%)';
                 }}
@@ -94,7 +94,7 @@ const Hero = () => {
                 muted
                 loop
                 onError={(e) => {
-                  // Fallback si el video no carga
+                  // Fallback simple para evitar loop infinito
                   e.target.style.display = 'none';
                   e.target.parentElement.style.background = 'linear-gradient(135deg, #d84523 0%, #ff7d1d 100%)';
                 }}
@@ -142,10 +142,6 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto space-y-8">
           {/* Logo principal */}
           <div className="space-y-4 animate-fade-in">
-            <div className="w-24 h-24 md:w-32 md:h-32 bg-primary-red rounded-full flex items-center justify-center mx-auto shadow-2xl">
-              <span className="text-4xl md:text-5xl">🐔</span>
-            </div>
-            
             <h1 className="text-5xl md:text-7xl font-bold text-white drop-shadow-lg">
               La Casa del Pollo
             </h1>
@@ -167,10 +163,6 @@ const Hero = () => {
             >
               Ver Menú Completo
             </button>
-            
-            <p className="text-neutral-cream text-sm md:text-base">
-              🏆 Los mejores productos de pollo de Trelew
-            </p>
           </div>
 
           {/* Información de contacto rápida */}
@@ -196,13 +188,6 @@ const Hero = () => {
               <p className="text-xs opacity-90">Delivery propio</p>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Flecha para scroll down */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
     </section>

@@ -7,22 +7,23 @@ const ProductCard = ({ producto, onProductClick }) => {
       onClick={() => onProductClick(producto)}
     >
       {/* Imagen del producto */}
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden h-48 bg-neutral-cream">
         <img
           src={producto.imagen}
           alt={producto.nombre}
           className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
           onError={(e) => {
-            e.target.src = `data:image/svg+xml;base64,${btoa(`
-              <svg width="400" height="200" xmlns="http://www.w3.org/2000/svg">
-                <rect width="100%" height="100%" fill="#f4f0e5"/>
-                <text x="50%" y="50%" font-family="Arial" font-size="16" fill="#d84523" text-anchor="middle" dy=".3em">
-                  ${producto.nombre}
-                </text>
-              </svg>
-            `)}`;
+            e.target.style.display = 'none';
+            e.target.nextElementSibling.style.display = 'flex';
           }}
         />
+        {/* Placeholder cuando falla la imagen */}
+        <div className="w-full h-48 bg-neutral-cream flex items-center justify-center text-neutral-dark hidden">
+          <div className="text-center">
+            <span className="text-4xl mb-2 block">🐔</span>
+            <p className="font-semibold text-sm">{producto.nombre}</p>
+          </div>
+        </div>
         
         {/* Indicador de promoción si aplica */}
         {producto.enPromocion && (

@@ -22,8 +22,16 @@ const About = () => {
           <div className="relative">
             <div className="bg-white rounded-2xl p-8 shadow-lg h-full">
               <div className="text-center">
-                <div className="w-32 h-32 bg-primary-red rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
-                  <span className="text-6xl">🐔</span>
+                <div className="w-40 h-40 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl overflow-hidden border-4 border-primary-red">
+                  <img 
+                    src="/imagenes/logo.svg" 
+                    alt="La Casa del Pollo Logo"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.parentElement.innerHTML = '<span class="text-primary-red text-6xl">🐔</span>';
+                    }}
+                  />
                 </div>
                 <h3 className="text-2xl font-bold text-neutral-dark mb-4">
                   Nuestra Pasión

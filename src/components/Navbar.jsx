@@ -46,8 +46,16 @@ const Navbar = ({ onCarritoClick }) => {
               onClick={() => scrollToSection('hero')}
               className="flex items-center space-x-2 group"
             >
-              <div className="w-10 h-10 md:w-12 md:h-12 bg-primary-red rounded-full flex items-center justify-center group-hover:scale-105 transition-transform">
-                <span className="text-white font-bold text-lg md:text-xl">🐔</span>
+              <div className="w-14 h-14 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center group-hover:scale-105 transition-transform overflow-hidden shadow-lg border-2 border-gray-100">
+                <img 
+                  src="/imagenes/logo.svg" 
+                  alt="La Casa del Pollo Logo"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.parentElement.innerHTML = '<span class="text-primary-red font-bold text-lg md:text-xl">🐔</span>';
+                  }}
+                />
               </div>
               <div className={`${isScrolled ? 'text-neutral-dark' : 'text-white'} transition-colors`}>
                 <h1 className="text-lg md:text-xl font-bold">La Casa del Pollo</h1>
