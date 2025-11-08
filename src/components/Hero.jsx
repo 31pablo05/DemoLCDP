@@ -54,7 +54,7 @@ const slides = [
   },
   {    id: 7,
     tipo: 'video',
-    src: '/videos/videolocal2.mp4',
+    src: '/videos/videolocal3.mp4',
     alt: 'Video del local',
     titulo: 'Conocé Nuestro Local', 
     subtitulo: 'Calidad y frescura garantizada'
@@ -63,7 +63,6 @@ const slides = [
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [videoLoaded, setVideoLoaded] = useState({});
   const [scrollY, setScrollY] = useState(0);
 
   // Auto-play del carrusel con duración dinámica
@@ -103,10 +102,6 @@ const Hero = () => {
     }
   };
 
-  const handleVideoLoad = (slideId) => {
-    setVideoLoaded(prev => ({ ...prev, [slideId]: true }));
-  };
-
   // Efecto parallax - el fondo se mueve más lento que el scroll (reducido para mejor visualización)
   const parallaxOffset = scrollY * 0.3;
 
@@ -136,32 +131,18 @@ const Hero = () => {
                 }}
               />
             ) : (
-              <div className="relative w-full h-full">
-                {/* Preloader para video */}
-                {!videoLoaded[slide.id] && (
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary-red to-primary-orange flex items-center justify-center z-10">
-                    <div className="text-center text-white">
-                      <div className="animate-spin w-12 h-12 border-4 border-white border-t-transparent rounded-full mx-auto mb-4"></div>
-                      <p className="text-lg font-semibold">Cargando video...</p>
-                      <p className="text-sm opacity-80">🎬 Conocé nuestro local</p>
-                    </div>
-                  </div>
-                )}
-                
-                <video
-                  src={slide.src}
-                  className="w-full h-full object-cover"
-                  autoPlay
-                  muted
-                  loop
-                  onLoadedData={() => handleVideoLoad(slide.id)}
-                  onError={(e) => {
-                    // Fallback simple para evitar loop infinito
-                    e.target.style.display = 'none';
-                    e.target.parentElement.style.background = 'linear-gradient(135deg, #d84523 0%, #ff7d1d 100%)';
-                  }}
-                />
-              </div>
+              <video
+                src={slide.src}
+                className="w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                onError={(e) => {
+                  // Fallback simple para evitar loop infinito
+                  e.target.style.display = 'none';
+                  e.target.parentElement.style.background = 'linear-gradient(135deg, #d84523 0%, #ff7d1d 100%)';
+                }}
+              />
             )}
           </div>
         ))}
