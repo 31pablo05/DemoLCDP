@@ -12,7 +12,7 @@ const productos = [
     precio: 2800,
     unidad: 'kg',
     categoria: 'pata-muslo',
-    imagen: '/imagenes/pata-muslo.jpg',
+    imagen: '/imagenes/heladera2.jpg',
     enPromocion: false
   },
 
@@ -36,7 +36,7 @@ const productos = [
     precio: 800,
     unidad: 'unidad',
     categoria: 'hamburguesas',
-    imagen: '/imagenes/hamburguesas.jpg',
+    imagen: '/imagenes/heladera7.jpg',
     sabores: ['Clásica', 'Especiada', 'Con Hierbas', 'Criolla'],
     enPromocion: true
   },
@@ -49,7 +49,7 @@ const productos = [
     precio: 2200,
     unidad: 'unidad',
     categoria: 'arrollados',
-    imagen: '/imagenes/arrollados.jpg',
+    imagen: '/imagenes/heladera3.jpg',
     sabores: ['Jamón y Queso', 'Ciruela', 'Verdeo y Queso', 'Ananá', 'Jamón Crudo y Rúcula'],
     enPromocion: false
   },
@@ -86,7 +86,7 @@ const productos = [
     precio: 4800,
     unidad: 'kg',
     categoria: 'milanesas-rellenas',
-    imagen: '/imagenes/milanesas-rellenas.jpg',
+    imagen: '/imagenes/heladera8.jpg',
     tipos: ['Jamón y Queso', 'Verdura', 'Caprese'],
     enPromocion: false
   },
@@ -99,7 +99,7 @@ const productos = [
     precio: 4200,
     unidad: 'kg',
     categoria: 'milanesas-clasicas',
-    imagen: '/imagenes/milanesas-clasicas.jpg',
+    imagen: '/imagenes/heladera6.jpg',
     tipos: ['Pata Muslo', 'Pechuga'],
     sabores: ['Pan Rallado', 'Avena y Semillas'],
     enPromocion: false
@@ -164,14 +164,14 @@ const Menu = () => {
   };
 
   return (
-    <section id="menu" className="py-16 bg-white">
+    <section id="menu" className="py-16 bg-gradient-to-br from-neutral-dark to-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header de la sección */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-neutral-dark mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             🍗 Nuestro Menú
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-neutral-cream max-w-3xl mx-auto">
             Productos frescos y de la mejor calidad. Todos nuestros productos son preparados diariamente 
             con los más altos estándares de higiene y frescura.
           </p>
@@ -186,8 +186,8 @@ const Menu = () => {
                 onClick={() => setCategoriaActiva(categoria.id)}
                 className={`px-4 py-2 rounded-full font-medium transition-all duration-300 transform hover:scale-105 ${
                   categoriaActiva === categoria.id
-                    ? 'bg-primary-red text-white shadow-lg'
-                    : 'bg-neutral-cream text-neutral-dark hover:bg-primary-red hover:text-white'
+                    ? 'bg-primary-red text-white shadow-lg shadow-primary-red/25'
+                    : 'bg-white bg-opacity-10 text-neutral-cream border border-neutral-cream border-opacity-30 hover:bg-primary-red hover:text-white hover:border-primary-red'
                 }`}
               >
                 <span className="mr-2">{categoria.icono}</span>
@@ -198,22 +198,22 @@ const Menu = () => {
         </div>
 
         {/* Información importante */}
-        <div className="bg-gradient-to-r from-neutral-cream to-neutral-beige rounded-2xl p-6 mb-12">
+        <div className="bg-gradient-to-r from-primary-red to-primary-orange rounded-2xl p-6 mb-12 shadow-xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
             <div className="flex flex-col items-center space-y-2">
               <span className="text-2xl">✅</span>
-              <h3 className="font-semibold text-neutral-dark">Productos Frescos</h3>
-              <p className="text-sm text-gray-600">Preparados diariamente con la mejor calidad</p>
+              <h3 className="font-semibold text-white">Productos Frescos</h3>
+              <p className="text-sm text-neutral-cream opacity-90">Preparados diariamente con la mejor calidad</p>
             </div>
             <div className="flex flex-col items-center space-y-2">
               <span className="text-2xl">🏠</span>
-              <h3 className="font-semibold text-neutral-dark">Hecho como en Casa</h3>
-              <p className="text-sm text-gray-600">Productos artesanales con recetas tradicionales</p>
+              <h3 className="font-semibold text-white">Hecho como en Casa</h3>
+              <p className="text-sm text-neutral-cream opacity-90">Productos artesanales con recetas tradicionales</p>
             </div>
             <div className="flex flex-col items-center space-y-2">
               <span className="text-2xl">🚚</span>
-              <h3 className="font-semibold text-neutral-dark">Delivery Disponible</h3>
-              <p className="text-sm text-gray-600">Llevamos tu pedido a tu casa</p>
+              <h3 className="font-semibold text-white">Delivery Disponible</h3>
+              <p className="text-sm text-neutral-cream opacity-90">Llevamos tu pedido a tu casa</p>
             </div>
           </div>
         </div>
@@ -232,7 +232,7 @@ const Menu = () => {
         {/* Mensaje si no hay productos */}
         {productosFiltrados.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">
+            <p className="text-neutral-cream text-lg">
               No hay productos disponibles en esta categoría
             </p>
           </div>
@@ -240,14 +240,14 @@ const Menu = () => {
 
         {/* Información adicional */}
         <div className="mt-16 text-center">
-          <div className="bg-primary-red text-white rounded-2xl p-8">
+          <div className="bg-gradient-to-r from-primary-orange to-primary-red text-white rounded-2xl p-8 shadow-2xl">
             <h3 className="text-2xl font-bold mb-4">🔥 ¿No encontrás lo que buscás?</h3>
-            <p className="text-lg mb-6">
+            <p className="text-lg mb-6 text-neutral-cream">
               Contamos con más productos y cortes especiales. ¡Consultanos por WhatsApp!
             </p>
             <button
               onClick={() => window.open('https://wa.me/5492804123456?text=Hola! Me gustaría consultar por productos especiales', '_blank')}
-              className="bg-white text-primary-red font-bold py-3 px-8 rounded-full hover:bg-neutral-cream transition-colors"
+              className="bg-white text-primary-red font-bold py-3 px-8 rounded-full hover:bg-neutral-cream transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
               Consultar por WhatsApp
             </button>

@@ -5,27 +5,27 @@ import { useCarrito } from '../context/CarritoContext';
 const promociones = [
   {
     id: 'promo-1',
-    nombre: 'Combo Familiar Completo',
-    descripcion: 'Pollo parrillero + 2kg pata muslo + 1kg milanesas',
-    precio: 15990,
-    precioOriginal: 18500,
-    imagen: '/imagenes/combo-familiar.jpg',
-    etiqueta: 'MÁS VENDIDO',
-    descuento: '15%',
-    unidad: 'combo',
-    categoria: 'combos'
+    nombre: 'Promo Hamburguesas Parrilleras',
+    descripcion: '10 hamburguesas parrilleras por solo $13.999',
+    precio: 13999,
+    precioOriginal: 16000,
+    imagen: '/imagenes/promo1.jpg',
+    etiqueta: 'SUPER PROMO',
+    descuento: '13%',
+    unidad: 'pack 10u',
+    categoria: 'hamburguesas'
   },
   {
     id: 'promo-2',
-    nombre: 'Pack Milanesas Premium',
-    descripcion: '3kg milanesas rebozadas con avena y semillas',
-    precio: 12800,
-    precioOriginal: 15000,
-    imagen: '/imagenes/milanesas-premium.jpg',
-    etiqueta: 'PROMOCIÓN',
-    descuento: '15%',
-    unidad: 'pack',
-    categoria: 'milanesas'
+    nombre: 'Promo Pata Muslo',
+    descripcion: '3kg de pata muslo fresco por solo $10.999',
+    precio: 10999,
+    precioOriginal: 12600,
+    imagen: '/imagenes/promo2.jpg',
+    etiqueta: 'OFERTA',
+    descuento: '13%',
+    unidad: 'pack 3kg',
+    categoria: 'pata-muslo'
   },
   {
     id: 'promo-3',
@@ -183,6 +183,137 @@ const Promociones = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Sección de formas de pago y descuentos */}
+        <div className="mt-16 mb-12">
+          <div className="text-center mb-8">
+            <div className="flex items-center justify-center mb-4">
+              <img 
+                src="/imagenes/publi7.png" 
+                alt="Descuentos especiales"
+                className="w-12 h-12 md:w-16 md:h-16 object-contain mr-4"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextElementSibling.style.display = 'inline';
+                }}
+              />
+              <span className="text-4xl hidden">💰</span>
+              <h3 className="text-3xl md:text-4xl font-bold text-neutral-dark">
+                ¡Más Descuentos para Vos!
+              </h3>
+            </div>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Elegí tu forma de pago favorita y ahorrá aún más en todos nuestros productos
+            </p>
+          </div>
+
+          {/* Grid de formas de pago */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            
+            {/* Efectivo - 10% */}
+            <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group">
+              <div className="relative overflow-hidden bg-gradient-to-br from-green-500 to-green-600">
+                <img
+                  src="/imagenes/ahorro1.jpg"
+                  alt="Descuento 10% en efectivo - Todos los días abona en efectivo y llevate un 10% de ahorro en tu compra"
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextElementSibling.style.display = 'flex';
+                  }}
+                />
+                {/* Placeholder cuando falla la imagen */}
+                <div className="w-full h-80 bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center text-white hidden">
+                  <div className="text-center p-8">
+                    <span className="text-8xl mb-6 block">💵</span>
+                    <h4 className="text-3xl font-bold mb-4">10% OFF</h4>
+                    <p className="text-lg">Todos los días</p>
+                    <p className="text-lg">Abona en efectivo</p>
+                    <p className="text-lg">y llevate un 10% de ahorro</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Transferencia - 5% */}
+            <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group">
+              <div className="relative overflow-hidden bg-gradient-to-br from-blue-500 to-blue-600">
+                <img
+                  src="/imagenes/ahorro2.jpg"
+                  alt="Descuento 5% transferencia - Abona via transferencia y llevate 5% de ahorro en tu compra"
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextElementSibling.style.display = 'flex';
+                  }}
+                />
+                {/* Placeholder cuando falla la imagen */}
+                <div className="w-full h-80 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white hidden">
+                  <div className="text-center p-8">
+                    <span className="text-8xl mb-6 block">💳</span>
+                    <h4 className="text-3xl font-bold mb-4">5% OFF</h4>
+                    <p className="text-lg">Abona via transferencia</p>
+                    <p className="text-lg">y llevate 5% de ahorro</p>
+                    <p className="text-lg">en tu compra</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Jubilados - 15% */}
+            <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group border-2 border-primary-orange">
+              <div className="relative overflow-hidden bg-gradient-to-br from-primary-orange to-primary-red">
+                <img
+                  src="/imagenes/ahorro3.jpg"
+                  alt="Descuento 15% jubilados - Jubilados y pensionados todos los dias 15% descuento en efectivo"
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextElementSibling.style.display = 'flex';
+                  }}
+                />
+                {/* Placeholder cuando falla la imagen */}
+                <div className="w-full h-80 bg-gradient-to-br from-primary-orange to-primary-red flex items-center justify-center text-white hidden">
+                  <div className="text-center p-8">
+                    <span className="text-8xl mb-6 block">👴</span>
+                    <h4 className="text-3xl font-bold mb-4">15% OFF</h4>
+                    <p className="text-lg">Jubilados y pensionados</p>
+                    <p className="text-lg">todos los días</p>
+                    <p className="text-lg">15% descuento en efectivo</p>
+                  </div>
+                </div>
+
+                {/* Badge especial destacado */}
+                <div className="absolute top-4 right-4">
+                  <span className="bg-yellow-500 text-black text-sm font-bold px-3 py-2 rounded-full shadow-lg animate-bounce">
+                    ⭐ ESPECIAL
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Información adicional sobre descuentos */}
+          <div className="mt-8 bg-gradient-to-r from-neutral-dark to-black text-white rounded-2xl p-6">
+            <div className="text-center">
+              <h4 className="text-xl font-bold mb-3">📋 Información Importante sobre Descuentos</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div>
+                  <span className="block font-semibold text-primary-orange mb-1">💡 Acumulables</span>
+                  <span className="text-neutral-cream">Los descuentos NO se acumulan entre sí</span>
+                </div>
+                <div>
+                  <span className="block font-semibold text-primary-orange mb-1">🕒 Vigencia</span>
+                  <span className="text-neutral-cream">Válidos todos los días de atención</span>
+                </div>
+                <div>
+                  <span className="block font-semibold text-primary-orange mb-1">📞 Consultas</span>
+                  <span className="text-neutral-cream">Preguntá por descuentos especiales</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Call to action para ver más */}

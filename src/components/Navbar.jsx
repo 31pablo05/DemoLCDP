@@ -35,7 +35,7 @@ const Navbar = ({ onCarritoClick }) => {
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-white shadow-lg backdrop-blur-sm bg-opacity-95' 
+        ? 'bg-gradient-to-r from-primary-red to-primary-orange shadow-lg backdrop-blur-sm' 
         : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,7 +57,7 @@ const Navbar = ({ onCarritoClick }) => {
                   }}
                 />
               </div>
-              <div className={`${isScrolled ? 'text-neutral-dark' : 'text-white'} transition-colors`}>
+              <div className={`${isScrolled ? 'text-white' : 'text-white'} transition-colors`}>
                 <h1 className="text-lg md:text-xl font-bold">La Casa del Pollo</h1>
                 <p className="text-xs md:text-sm opacity-80">Productos frescos</p>
               </div>
@@ -72,7 +72,7 @@ const Navbar = ({ onCarritoClick }) => {
                 onClick={() => scrollToSection(item.id)}
                 className={`text-sm lg:text-base font-medium transition-all duration-200 hover:scale-105 ${
                   isScrolled 
-                    ? 'text-neutral-dark hover:text-primary-red' 
+                    ? 'text-white hover:text-neutral-cream' 
                     : 'text-white hover:text-primary-orange'
                 }`}
               >
@@ -88,7 +88,7 @@ const Navbar = ({ onCarritoClick }) => {
               onClick={onCarritoClick}
               className={`relative p-2 rounded-full transition-all duration-200 hover:scale-110 ${
                 isScrolled 
-                  ? 'text-neutral-dark hover:bg-neutral-cream' 
+                  ? 'text-white hover:bg-white hover:bg-opacity-20' 
                   : 'text-white hover:bg-white hover:bg-opacity-20'
               }`}
             >
@@ -105,7 +105,7 @@ const Navbar = ({ onCarritoClick }) => {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={`md:hidden p-2 rounded-full transition-all duration-200 ${
                 isScrolled 
-                  ? 'text-neutral-dark hover:bg-neutral-cream' 
+                  ? 'text-white hover:bg-white hover:bg-opacity-20' 
                   : 'text-white hover:bg-white hover:bg-opacity-20'
               }`}
             >
