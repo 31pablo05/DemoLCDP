@@ -39,7 +39,7 @@ const slides = [
   {
     id: 5,
     tipo: 'imagen',
-    src: '/imagenes/publi4.jpg',
+    src: '/imagenes/coccion3.jpg',
     alt: 'Nuestro local',
     titulo: 'Te Esperamos en Casa',
     subtitulo: 'Atención personalizada y familiar'
@@ -69,8 +69,8 @@ const Hero = () => {
   // Auto-play del carrusel con duración dinámica
   useEffect(() => {
     const currentSlideData = slides[currentSlide];
-    // Videos duran 8 segundos, imágenes 5 segundos
-    const duration = currentSlideData?.tipo === 'video' ? 8000 : 5000;
+    // Videos duran 12 segundos, imágenes 5 segundos
+    const duration = currentSlideData?.tipo === 'video' ? 12000 : 5000;
     
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
