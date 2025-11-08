@@ -3,6 +3,7 @@ import { CarritoProvider } from './context/CarritoContext';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Promociones from './components/Promociones';
+import TutorialPedidos from './components/TutorialPedidos';
 import Menu from './components/Menu';
 import About from './components/About';
 import Contacto from './components/Contacto';
@@ -38,6 +39,7 @@ function App() {
         <Navbar onCarritoClick={handleAbrirCarrito} />
         <Hero />
         <Promociones />
+        <TutorialPedidos />
         <Menu />
         <About />
         <Contacto />

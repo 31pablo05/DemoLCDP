@@ -11,10 +11,13 @@ export default {
           red: '#d84523',
           orange: '#ff7d1d',
           'orange-red': '#fd440e',
+          green: '#10b981',
         },
         neutral: {
           cream: '#fbf7f4',
           beige: '#f4f0e5',
+          light: '#f8fafc',
+          medium: '#64748b',
           dark: '#171717',
           black: '#000000',
         }
