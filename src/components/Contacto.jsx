@@ -155,27 +155,132 @@ const Contacto = () => {
           <h3 className="text-2xl font-bold text-neutral-dark text-center mb-8">
             📍 Nuestras Ubicaciones
           </h3>
-          <div className="bg-gray-100 rounded-2xl p-4 h-96 flex items-center justify-center">
-            {/* Aquí iría el mapa real de Google Maps */}
-            <div className="text-center">
-              <MapPin className="w-16 h-16 text-primary-red mx-auto mb-4" />
-              <h4 className="text-xl font-semibold text-neutral-dark mb-2">Mapa Interactivo</h4>
-              <p className="text-gray-600 mb-4">
-                Hacé clic en los botones de arriba para ver cada sucursal en Google Maps
+          
+          {/* Mapa de Google Maps embebido */}
+          <div className="bg-gray-100 rounded-2xl overflow-hidden shadow-lg">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2944.7234567890123!2d-65.3058!3d-43.2481!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDPCsDE0JzUzLjIiUyA2NcKwMTgnMjEuMCJX!5e0!3m2!1ses!2sar!4v1699999999999!5m2!1ses!2sar"
+              width="100%"
+              height="400"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Ubicación de La Casa del Pollo - Trelew"
+              className="w-full"
+            ></iframe>
+          </div>
+
+          {/* Botones para direcciones específicas */}
+          <div className="flex flex-col sm:flex-row gap-4 mt-6 justify-center">
+            <button
+              onClick={() => window.open('https://maps.google.com/?q=Av.+Yrigoyen+923,+Trelew', '_blank')}
+              className="bg-primary-red text-white px-6 py-3 rounded-full hover:bg-primary-orange-red transition-colors font-semibold shadow-lg"
+            >
+              📍 Ver Sucursal Centro - Av. Yrigoyen 923
+            </button>
+            <button
+              onClick={() => window.open('https://maps.google.com/?q=Musters+1938,+Trelew', '_blank')}
+              className="bg-primary-orange text-white px-6 py-3 rounded-full hover:bg-primary-orange-red transition-colors font-semibold shadow-lg"
+            >
+              📍 Ver Sucursal Norte - Musters 1938
+            </button>
+          </div>
+        </div>
+
+        {/* Reseñas de Google */}
+        <div className="mb-16">
+          <h3 className="text-2xl font-bold text-neutral-dark text-center mb-8">
+            ⭐ Lo que dicen nuestros clientes
+          </h3>
+          
+          <div className="bg-white rounded-2xl shadow-lg p-8">
+            <div className="text-center mb-8">
+              <div className="flex items-center justify-center mb-4">
+                <img 
+                  src="/imagenes/logo.svg" 
+                  alt="La Casa del Pollo"
+                  className="w-16 h-16 rounded-full border-2 border-primary-orange mr-4"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextElementSibling.style.display = 'flex';
+                  }}
+                />
+                <div className="w-16 h-16 bg-primary-red rounded-full flex items-center justify-center text-white text-2xl font-bold hidden">
+                  🐔
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-neutral-dark">La Casa del Pollo</h4>
+                  <div className="flex items-center mt-1">
+                    <div className="flex text-yellow-400 mr-2">
+                      {[...Array(5)].map((_, i) => (
+                        <span key={i} className="text-lg">⭐</span>
+                      ))}
+                    </div>
+                    <span className="text-gray-600 text-sm">Evaluanos en Google</span>
+                  </div>
+                  <p className="text-gray-500 text-sm">Pollería · Av. Yrigoyen 923, Trelew</p>
+                </div>
+              </div>
+              
+              <div className="flex flex-wrap justify-center gap-4 mb-6">
+                <a
+                  href="https://share.google/bw3gMsjRCBltTFhC9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition-colors font-semibold"
+                >
+                  Ver todas las reseñas en Google
+                </a>
+                <button
+                  onClick={() => window.open('https://g.page/r/CQlKJ8Xh5kAGEB0/review', '_blank')}
+                  className="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transition-colors font-semibold"
+                >
+                  Escribir una reseña
+                </button>
+              </div>
+            </div>
+
+            {/* Reseñas destacadas - Placeholder para reseñas reales */}
+            <div className="text-center py-12 border-2 border-dashed border-gray-300 rounded-xl">
+              <div className="text-6xl mb-4">⭐</div>
+              <h4 className="text-xl font-bold text-neutral-dark mb-3">
+                Próximamente: Reseñas de Clientes Reales
+              </h4>
+              <p className="text-gray-600 mb-6 max-w-md mx-auto">
+                Estamos recopilando las mejores reseñas de nuestros clientes para mostrarlas aquí. 
+                ¡Tu opinión es muy importante para nosotros!
               </p>
-              <div className="space-x-4">
-                <button
-                  onClick={() => window.open('https://maps.google.com/?q=Av.+Yrigoyen+923,+Trelew', '_blank')}
-                  className="bg-primary-red text-white px-4 py-2 rounded-full hover:bg-primary-orange-red transition-colors"
-                >
-                  Ver Sucursal Centro
-                </button>
-                <button
-                  onClick={() => window.open('https://maps.google.com/?q=Musters+1938,+Trelew', '_blank')}
-                  className="bg-primary-orange text-white px-4 py-2 rounded-full hover:bg-primary-orange-red transition-colors"
-                >
-                  Ver Sucursal Norte
-                </button>
+              <a
+                href="https://g.page/r/CQlKJ8Xh5kAGEB0/review"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-primary-red text-white px-6 py-3 rounded-full hover:bg-primary-orange-red transition-colors font-semibold inline-flex items-center gap-2"
+              >
+                <span>⭐</span>
+                Dejá tu reseña en Google
+              </a>
+            </div>
+
+            {/* Estadísticas de reseñas - Actualizables */}
+            <div className="mt-8 bg-gradient-to-r from-primary-red to-primary-orange text-white rounded-xl p-6">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <div>
+                  <span className="text-2xl font-bold block">--</span>
+                  <span className="text-sm opacity-90">Calificación promedio</span>
+                </div>
+                <div>
+                  <span className="text-2xl font-bold block">--</span>
+                  <span className="text-sm opacity-90">Reseñas totales</span>
+                </div>
+                <div>
+                  <span className="text-2xl font-bold block">100%</span>
+                  <span className="text-sm opacity-90">Compromiso calidad</span>
+                </div>
+                <div>
+                  <span className="text-2xl font-bold block">12+</span>
+                  <span className="text-sm opacity-90">Años de experiencia</span>
+                </div>
               </div>
             </div>
           </div>
