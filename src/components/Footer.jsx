@@ -127,11 +127,11 @@ const Footer = () => {
             {/* Redes sociales */}
             <div className="space-y-3 mb-6">
               <button
-                onClick={() => window.open('https://instagram.com/lacasadelpollo_trelew', '_blank')}
+                onClick={() => window.open('https://www.instagram.com/casadelpolloar/', '_blank')}
                 className="flex items-center space-x-3 text-gray-300 hover:text-primary-orange transition-colors w-full text-left"
               >
                 <Instagram className="w-5 h-5" />
-                <span className="text-sm">@lacasadelpollo_trelew</span>
+                <span className="text-sm">@casadelpolloar</span>
               </button>
               
               <button
@@ -187,11 +187,19 @@ const Footer = () => {
               <Heart className="w-4 h-4 text-primary-red" />
             </div>
 
-            {/* Créditos */}
+            {/* Créditos de desarrollo */}
             <div className="text-sm text-gray-500">
-              <span>Hecho con </span>
-              <Heart className="w-4 h-4 text-primary-red inline" />
-              <span> en Trelew, Chubut</span>
+              <span>Desarrollado con </span>
+              <Heart className="w-4 h-4 text-primary-red inline animate-pulse" />
+              <span> por </span>
+              <a 
+                href="https://devcraftpablo.online/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary-orange hover:text-primary-red transition-colors font-semibold"
+              >
+                Pablo Proboste
+              </a>
             </div>
           </div>
 

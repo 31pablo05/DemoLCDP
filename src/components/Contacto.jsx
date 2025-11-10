@@ -35,8 +35,8 @@ const Contacto = () => {
   const redesSociales = [
     {
       nombre: 'Instagram',
-      usuario: '@lacasadelpollo_trelew',
-      url: 'https://instagram.com/lacasadelpollo_trelew',
+      usuario: '@casadelpolloar',
+      url: 'https://www.instagram.com/casadelpolloar/',
       icono: Instagram,
       color: 'bg-gradient-to-r from-purple-500 to-pink-500'
     },

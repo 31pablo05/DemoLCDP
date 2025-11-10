@@ -213,7 +213,7 @@ export function CarritoProvider({ children }) {
     return mensaje;
   }, [carrito]);
 
-  const enviarPedidoWhatsApp = useCallback((datosCliente, numeroWhatsApp = "5492804123456") => {
+  const enviarPedidoWhatsApp = useCallback((datosCliente, numeroWhatsApp = "5492804389134") => {
     const mensaje = generarMensajeWhatsApp(datosCliente);
     const mensajeCodificado = encodeURIComponent(mensaje);
     const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`;

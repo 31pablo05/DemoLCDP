@@ -96,18 +96,18 @@ const Promociones = () => {
               className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group"
             >
           {/* Imagen del producto */}
-          <div className="relative overflow-hidden h-48 bg-neutral-cream">
+          <div className="relative overflow-hidden h-64 md:h-56 bg-neutral-cream">
             <img
               src={promo.imagen}
               alt={promo.nombre}
-              className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+              className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
               onError={(e) => {
                 e.target.style.display = 'none';
                 e.target.nextElementSibling.style.display = 'flex';
               }}
             />
             {/* Placeholder cuando falla la imagen */}
-            <div className="w-full h-48 bg-neutral-cream flex items-center justify-center text-neutral-dark hidden">
+            <div className="w-full h-64 md:h-56 bg-neutral-cream flex items-center justify-center text-neutral-dark hidden">
               <div className="text-center">
                 <span className="text-4xl mb-2 block">🐔</span>
                 <p className="font-semibold text-sm">{promo.nombre}</p>
@@ -192,7 +192,7 @@ const Promociones = () => {
               <img 
                 src="/imagenes/publi7.png" 
                 alt="Descuentos especiales"
-                className="w-12 h-12 md:w-16 md:h-16 object-contain mr-4"
+                className="w-12 h-12 md:w-16 md:h-16 object-contain mr-4 rounded-lg border-2 border-primary-orange p-1 bg-white shadow-lg"
                 onError={(e) => {
                   e.target.style.display = 'none';
                   e.target.nextElementSibling.style.display = 'inline';
@@ -212,7 +212,7 @@ const Promociones = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             
             {/* Efectivo - 10% */}
-            <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group">
+            <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group border-2 border-primary-orange">
               <div className="relative overflow-hidden bg-gradient-to-br from-green-500 to-green-600">
                 <img
                   src="/imagenes/ahorro1.jpg"
@@ -237,7 +237,7 @@ const Promociones = () => {
             </div>
 
             {/* Transferencia - 5% */}
-            <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group">
+            <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group border-2 border-primary-orange">
               <div className="relative overflow-hidden bg-gradient-to-br from-blue-500 to-blue-600">
                 <img
                   src="/imagenes/ahorro2.jpg"
